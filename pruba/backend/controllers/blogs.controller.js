@@ -1,7 +1,4 @@
-var express = require("express");
-var router = express.Router();
-
-var blogs = {
+export let blogs = {
     "1": {
         title: "first blog",
         content: "this is my first blog",
@@ -19,14 +16,10 @@ var blogs = {
     }
 };
 
-// Obtiene los datos de todos los blogs
-router.get("/", function(req, res, next) {
-    res.send(blogs);
-});
+export function getAllBlogs() {
+    return blogs;
+}
 
-// Obtiene los datos de un blog
-router.get("/:id", function(req, res, next) {
-    res.send(blogs[req.params.id]);
-});
-
-module.exports = router;
+export function getBlogByID(id) {
+    return blogs[id];
+}

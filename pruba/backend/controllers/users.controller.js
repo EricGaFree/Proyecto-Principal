@@ -1,7 +1,4 @@
-var express = require("express");
-var router = express.Router();
-
-let users = {
+export let users = {
     "1": {
         name: "pol",
         surname: "soriano",
@@ -25,14 +22,10 @@ let users = {
     }
 };
 
-// Obtiene los datos de todos los usuarios
-router.get("/", function(req, res, next) {
-    res.send(users);
-});
+export function getAllUsers() {
+    return users;
+}
 
-// Obtiene los datos de un solo usuario
-router.get("/:id", function(req, res, next) {
-    res.send(users[req.params.id]);
-});
-
-module.exports = router;
+export function getUserByID(id) {
+    return users[id];
+}

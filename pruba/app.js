@@ -1,28 +1,30 @@
-var createError = require("http-errors");
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
+import createError from "http-errors";
+import express, { json, urlencoded } from "express";
+import { join } from "path";
+import cookieParser from "cookie-parser";
+import logger from "morgan";
+import path from "path";
 
-var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
-var blogsRouter = require("./routes/blogs");
+import indexRouter from "./backend/routes/index.routes.js";
+import usersRouter from "./backend/routes/users.routes.js";
+import blogsRouter from "./backend/routes/blogs.routes.js";
 
 var app = express();
+const __dirname = path.resolve();
 
 // view engine setup
-app.set("views", path.join(__dirname, "views"));
+app.set("views", join(__dirname, "views"));
 app.set("view engine", "pug");
 
 app.use(logger("dev"));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(json());
+app.use(urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
-app.use("/blogs", blogsRouter)
+app.use("/blogs", blogsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -40,4 +42,4 @@ app.use(function(err, req, res, next) {
     res.render("error");
 });
 
-module.exports = app;
+export default app;
