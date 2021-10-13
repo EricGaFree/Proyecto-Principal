@@ -27,5 +27,9 @@ let users = {
 }
 
 export function createUser(req, res) {
-    return req.body
+    return req.body;
+}
+
+export function deleteusers() {
+    return {msg:"Usuarios eliminados"};
 }
