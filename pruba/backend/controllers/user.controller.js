@@ -26,6 +26,11 @@ export function getAllUsers() {
     return users;
 }
 
+export function getUserByID(id) {
+    const data = users[id] ? users[id] : {msg: "Not found"};
+    return data;
+}
+
 export function createUser(req, res) {
     return req.body;
 }
