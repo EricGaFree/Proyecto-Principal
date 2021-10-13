@@ -1,20 +1,20 @@
 let users = {
-    "1":{
+    "1": {
         nombre: "Alberto",
         apellido: "Matínez",
         email: "alberto.martinez@freematica.com"
     },
-    "2":{
+    "2": {
         nombre: "Eric",
         apellido: "Garcia",
         email: "eric.garcia@freematica.com"
-    }, 
-    "3":{
+    },
+    "3": {
         nombre: "Pol",
         apellido: "Soriano",
         email: "pol.soriano@freematica.com"
     },
-    "4":{
+    "4": {
         nombre: "Carlos",
         apellido: "Morales",
         email: "carlos.morales@freematica.com"
@@ -22,10 +22,16 @@ let users = {
 }
 /* GET home page. */
 
- export function getAllUsers() {
+export function getAllUsers() {
     return users;
 }
 
 export function createUser(req, res) {
     return req.body
+}
+
+export function UpdateUser() {
+    return {
+        msg: "User updated."
+    }
 }
