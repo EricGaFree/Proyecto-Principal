@@ -6,6 +6,7 @@ import logger from "morgan";
 import path from "path";
 
 import indexRouter from "./backend/routes/index.routes.js";
+import userRouter from "./backend/routes/user.routes.js";
 
 var app = express();
 const __dirname = path.resolve();
@@ -21,6 +22,7 @@ app.use(cookieParser());
 app.use(express.static(join(__dirname, "public")));
 
 app.use("/", indexRouter);
+app.use("/users", userRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
