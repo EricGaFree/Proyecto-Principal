@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getAllUsers, createUser, deleteusers } from "../controllers/user.controller.js";
+import { UpdateUser, getAllUsers, createUser, deleteUsers } from "../controllers/user.controller.js";
 var router = Router();
 
 router.get("/", function (req, res, next) {
@@ -13,13 +13,13 @@ router.post("/", function (req, res, next) {
 });
 
 router.put("/", function (req, res, next) {
-    const data = updateUser(req);
+    const data = UpdateUser(req);
     res.status(200).send(data);
 });
 
 router.delete("/", function (req, res, next) {
-    const data = deleteusers();
-    res.status(204);
+    const data = deleteUsers();
+    res.status(200).send(data);
 });
 
 export default router;

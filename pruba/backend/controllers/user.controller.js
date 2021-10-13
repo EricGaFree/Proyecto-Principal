@@ -19,7 +19,7 @@ let users = {
         apellido: "Morales",
         email: "carlos.morales@freematica.com"
     }
-}
+};
 /* GET home page. */
 
 export function getAllUsers() {
@@ -30,12 +30,10 @@ export function createUser(req, res) {
     return req.body;
 }
 
-export function deleteusers() {
-    return {msg:"Usuarios eliminados"};
+export function deleteUsers() {
+    return { msg: "Usuarios eliminados" };
 }
 
 export function UpdateUser() {
-    return {
-        msg: "User updated."
-    }
+    return { msg: "User updated." };
 }
