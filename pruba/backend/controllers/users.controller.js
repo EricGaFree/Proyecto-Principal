@@ -1,19 +1,24 @@
+import { blogs } from "./blogs.controller.js";
+
 export let users = {
-    "1": {
+    1: {
+        id: 1,
         name: "pol",
         surname: "soriano",
         age: 20,
         username: "pol.soriano",
         blogs: []
     },
-    "2": {
+    2: {
+        id: 2,
         name: "alberto",
         surname: "martinez",
         age: 20,
         username: "alberto.martinez",
         blogs: []
     },
-    "3": {
+    3: {
+        id: 3,
         name: "carlos",
         surname: "morales",
         age: 20,
