@@ -1,2 +1,2 @@
 # Proyecto-Principal
-realizar "npm install" para instalar los paquetes necesarios
+Probando los metodos POST, GET, PUT, DELETE por separado y después juntárlo todo.
