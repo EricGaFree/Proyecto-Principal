@@ -27,9 +27,8 @@ export class BotonComponent {
         resultado += "<ul>";
 
         this.users.forEach((user: any) => {
-          resultado += `<li><p>${user.username}</p></li>`
+          resultado += `<li><p>${user.apellido}, ${user.nombre}:  ${user.email}</p></li>`
         });
-        // console.log(this.users);
         resultado += "</ul>";
 
         contenedorUsuarios.innerHTML = resultado;

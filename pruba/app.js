@@ -7,8 +7,7 @@ import path from "path";
 import cors from "cors";
 
 import indexRouter from "./backend/routes/index.routes.js";
-import usersRouter from "./backend/routes/users.routes.js";
-import blogsRouter from "./backend/routes/blogs.routes.js";
+import usersRouter from "./backend/routes/user.routes.js";
 
 var app = express();
 const __dirname = path.resolve();
@@ -26,7 +25,6 @@ app.use(cors());
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
-app.use("/blogs", blogsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
