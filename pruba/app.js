@@ -4,6 +4,7 @@ import { join } from "path";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
 import path from "path";
+import cors from "cors";
 
 import indexRouter from "./backend/routes/index.routes.js";
 import usersRouter from "./backend/routes/users.routes.js";
@@ -21,6 +22,7 @@ app.use(json());
 app.use(urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(join(__dirname, "public")));
+app.use(cors());
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);

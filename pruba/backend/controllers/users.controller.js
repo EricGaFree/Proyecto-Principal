@@ -1,7 +1,5 @@
-import { blogs } from "./blogs.controller.js";
-
-export let users = {
-    1: {
+export let users = [
+    {
         id: 1,
         name: "pol",
         surname: "soriano",
@@ -9,7 +7,7 @@ export let users = {
         username: "pol.soriano",
         blogs: []
     },
-    2: {
+    {
         id: 2,
         name: "alberto",
         surname: "martinez",
@@ -17,7 +15,7 @@ export let users = {
         username: "alberto.martinez",
         blogs: []
     },
-    3: {
+    {
         id: 3,
         name: "carlos",
         surname: "morales",
@@ -25,7 +23,7 @@ export let users = {
         username: "carlos.morales",
         blogs: []
     }
-};
+];
 
 export function getAllUsers() {
     return users;
