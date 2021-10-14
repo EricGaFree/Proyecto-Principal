@@ -23,8 +23,7 @@ export class BotonComponent {
 
     onSubmit() {
         let contenedorUsuarios: any = document.getElementById("usuarios");
-        let resultado = "<ul>";
-        resultado += "<ul>";
+        let resultado: string = "<ul>";
 
         this.users.forEach((user: any) => {
           resultado += `<li><p>${user.apellido}, ${user.nombre}:  ${user.email}</p></li>`
