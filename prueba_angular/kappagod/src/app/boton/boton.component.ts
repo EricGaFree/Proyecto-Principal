@@ -26,7 +26,7 @@ export class BotonComponent {
         let resultado: string = "<ul>";
 
         this.users.forEach((user: any) => {
-          resultado += `<li><p>${user.apellido}, ${user.nombre}:  ${user.email}</p></li>`
+          resultado += `<li><p>${user.apellido}, ${user.nombre}: ${user.email}</p></li>`
         });
         resultado += "</ul>";
 
