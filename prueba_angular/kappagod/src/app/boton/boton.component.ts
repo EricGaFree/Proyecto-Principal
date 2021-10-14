@@ -21,15 +21,50 @@ export class BotonComponent {
         }, error => (this.error = error));
     }
 
-    onSubmit() {
+    obtenerUsuarios() {
         let contenedorUsuarios: any = document.getElementById("usuarios");
         let resultado: string = "<ul>";
 
         this.users.forEach((user: any) => {
-          resultado += `<li><p>${user.apellido}, ${user.nombre}: ${user.email}</p></li>`
+            resultado += `<li><p>${user.apellido}, ${user.nombre}: ${user.email}</p></li>`;
         });
         resultado += "</ul>";
 
         contenedorUsuarios.innerHTML = resultado;
+    }
+
+    obtenerUsuarioNombre() {
+        let nombre: any = document.getElementById("nombre1");
+        let contenedor: any = document.getElementById("usuarioID");
+        let resultado: string = "";
+
+        this.users.forEach((user: any) => {
+            if (user.nombre.toLowerCase() === nombre.value.toLowerCase()) {
+                resultado = `<p>${user.apellido}, ${user.nombre}: ${user.email}</p>`;
+            }
+        });
+
+        if (resultado === "") {
+            contenedor.innerHTML = "El usuario introducido no existe";
+        } else {
+            contenedor.innerHTML = resultado;
+        }
+    }
+
+    crearUsuario() {
+        let nombre: any = document.getElementById("nombre2");
+        let apellidos: any = document.getElementById("apellido");
+        let email: any = document.getElementById("email");
+
+        this.http
+            .post<any>(this.url, {
+                nombre: nombre.value,
+                apellido: apellidos.value,
+                email: email.value
+            })
+            .subscribe(data => {
+                const datos = data;
+                console.log(datos);
+            });
     }
 }

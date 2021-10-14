@@ -1,3 +1,25 @@
 <h2>Pulsa para obtener los usuarios: </h2>
-<button type="button" (click)="onSubmit()">Click</button>
+<button type="button" (click)="obtenerUsuarios()">Click</button>
 <div id="usuarios"></div>
+
+<h2>Pulsa para obtener un usuario en especifico: </h2>
+<form action="">
+    <label for="nombre1">Nombre: </label>
+    <input type="text" name="nombre1" id="nombre1">
+    <button type="button" (click)="obtenerUsuarioNombre()" style="display: block; margin-top: 20px;">Click</button>
+</form>
+<br>
+<div id="usuarioID"></div>
+
+<h2>Pulsa para crear usuario: </h2>
+<!-- <p>Falta formulario</p> -->
+<form action="">
+    <label for="nombre2" style="margin-top: 10px;">Nombre: </label>
+    <input type="text" name="nombre2" id="nombre2" style="display: block; margin-top: 10px;">
+    <label for="apellido" style="margin-top: 10px;">Apellidos: </label>
+    <input type="text" name="apellido" id="apellido" style="display: block; margin-top: 10px;">
+    <label for="email" style="margin-top: 10px;">Email: </label>
+    <input type="text" name="email" id="email" style="display: block; margin-top: 10px;">
+</form>
+
+<button type="button" (click)="crearUsuario()" style="margin-top: 10px;">Click</button>
