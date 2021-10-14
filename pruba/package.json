@@ -3,12 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-<<<<<<< HEAD
     "start": "node ./bin/www.js",
     "dev": "npx nodemon ./bin/www.js"
-=======
-    "start": "node ./bin/www.js"
->>>>>>> d7475802 (añadido carpeta routes y controllers, mas archivos actualizados a ES6)
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
