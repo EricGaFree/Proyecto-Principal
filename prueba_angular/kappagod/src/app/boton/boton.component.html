@@ -1,12 +1,12 @@
 <h2>Pulsa para obtener los usuarios: </h2>
-<button type="button" (click)="obtenerUsuarios()">Click</button>
+<button type="button" (click)="getAllUsers()">Click</button>
 <div id="usuarios"></div>
 
 <h2>Pulsa para obtener un usuario en especifico: </h2>
 <form action="">
     <label for="nombre1">Nombre: </label>
     <input type="text" name="nombre1" id="nombre1">
-    <button type="button" (click)="obtenerUsuarioNombre()" style="display: block; margin-top: 20px;">Click</button>
+    <button type="button" (click)="getUserByName()" style="display: block; margin-top: 20px;">Click</button>
 </form>
 <br>
 <div id="usuarioID"></div>
@@ -22,4 +22,4 @@
     <input type="text" name="email" id="email" style="display: block; margin-top: 10px;">
 </form>
 
-<button type="button" (click)="crearUsuario()" style="margin-top: 10px;">Click</button>
+<button type="button" (click)="createUser()" style="margin-top: 10px;">Click</button>

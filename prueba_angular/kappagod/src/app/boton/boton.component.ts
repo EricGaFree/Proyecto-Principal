@@ -1,5 +1,7 @@
 import { Component } from "@angular/core";
 import { HttpClient } from "@angular/common/http"; // <----
+import { IUser } from "../users.interface";
+import { UsersService } from "../users.service";
 
 @Component({
     selector: "app-boton",
@@ -8,63 +10,51 @@ import { HttpClient } from "@angular/common/http"; // <----
 })
 export class BotonComponent {
     title = "http-get";
-    users: any;
-    url: string = "http://localhost:3000/users";
-    error: any;
+    userService: UsersService = new UsersService(this.http);
 
     constructor(private http: HttpClient) {} // <---
 
     ngOnInit() {
         // <---
-        this.http.get<any>(this.url).subscribe(data => {
-            this.users = data[0];
-        }, error => (this.error = error));
     }
 
-    obtenerUsuarios() {
-        let contenedorUsuarios: any = document.getElementById("usuarios");
-        let resultado: string = "<ul>";
+    getAllUsers() {
+        let userContainer: any = document.getElementById("usuarios");
+        let users = this.userService.getAllUsers();
+        let result: string = "<ul>";
 
-        this.users.forEach((user: any) => {
-            resultado += `<li><p>${user.apellido}, ${user.nombre}: ${user.email}</p></li>`;
+        users.forEach((user: IUser) => {
+            result += `<li><p>${user.surname}, ${user.name}: ${user.email}</p></li>`;
         });
-        resultado += "</ul>";
+        result += "</ul>";
 
-        contenedorUsuarios.innerHTML = resultado;
+        userContainer.innerHTML = result;
     }
 
-    obtenerUsuarioNombre() {
-        let nombre: any = document.getElementById("nombre1");
-        let contenedor: any = document.getElementById("usuarioID");
-        let resultado: string = "";
+    getUserByName() {
+        let name: any = document.getElementById("nombre1");
+        let container: any = document.getElementById("usuarioID");
 
-        this.users.forEach((user: any) => {
-            if (user.nombre.toLowerCase() === nombre.value.toLowerCase()) {
-                resultado = `<p>${user.apellido}, ${user.nombre}: ${user.email}</p>`;
-            }
-        });
+        let data = this.userService.getUserByID(name.value);
 
-        if (resultado === "") {
-            contenedor.innerHTML = "El usuario introducido no existe";
+        if (data.name === "") {
+            container.innerHTML = "El usuario introducido no existe";
         } else {
-            contenedor.innerHTML = resultado;
+            container.innerHTML = `<p>${data.surname}, ${data.name}: ${data.email}</p>`;
         }
     }
 
-    crearUsuario() {
-        let nombre: any = document.getElementById("nombre2");
-        let apellidos: any = document.getElementById("apellido");
+    createUser() {
+        let name: any = document.getElementById("nombre2");
+        let surname: any = document.getElementById("apellido");
         let email: any = document.getElementById("email");
 
-        this.http
-            .post<any>(this.url, {
-                nombre: nombre.value,
-                apellido: apellidos.value,
-                email: email.value
-            })
-            .subscribe(data => {
-                const datos = data;
-                console.log(datos);
-            });
+        let user: IUser = {
+            name: name.value,
+            surname: surname.value,
+            email: email.value
+        };
+
+        this.userService.createUser(user);
     }
 }

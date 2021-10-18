@@ -1,22 +1,22 @@
 let users = [
     {
-        nombre: "Alberto",
-        apellido: "Matínez",
+        name: "Alberto",
+        surname: "Matínez",
         email: "alberto.martinez@freematica.com"
     },
     {
-        nombre: "Eric",
-        apellido: "Garcia",
+        name: "Eric",
+        surname: "Garcia",
         email: "eric.garcia@freematica.com"
     },
     {
-        nombre: "Pol",
-        apellido: "Soriano",
+        name: "Pol",
+        surname: "Soriano",
         email: "pol.soriano@freematica.com"
     },
     {
-        nombre: "Carlos",
-        apellido: "Morales",
+        name: "Carlos",
+        surname: "Morales",
         email: "carlos.morales@freematica.com"
     }
 ];
