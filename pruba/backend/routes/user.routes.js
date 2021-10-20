@@ -1,12 +1,11 @@
 import { Router } from "express";
-import userController from "../controllers/user.controller.js"
+import userController from "../controllers/user.controller.js";
+
 var router = Router();
 
-router.get("/",  function(req, res, next) {
-    const data = userController.getAllUsers();
-    setTimeout(() => {
-        res.status(200).json(data);        
-    }, 1000);
+router.get("/", async function(req, res, next) {
+    const data = await userController.getAllUsers();
+    res.status(200).send(data);
 });
 
 router.get("/:id", function(req, res, next) {

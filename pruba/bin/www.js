@@ -6,6 +6,13 @@
 
 import app from '../app.js';
 import { createServer } from 'http';
+import mongoose from "mongoose";
+const DB_URI = "mongodb://localhost:27017/usersdb";
+
+mongoose.connect(DB_URI, { useNewUrlParser: true })
+const db = mongoose.connection
+db.on('error', (error) => console.error(error))
+db.once('open', () => console.log('Connected'))
 
 /**
  * Get port from environment and store in Express.

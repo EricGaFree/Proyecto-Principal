@@ -1,32 +1,36 @@
-// CLASE
+import userSchema from "../models/user.model.js";
 
 class userController {
+    // users = [
+    //     {
+    //         name: "Alberto",
+    //         surname: "Matínez",
+    //         email: "alberto.martinez@freematica.com"
+    //     },
+    //     {
+    //         name: "Eric",
+    //         surname: "Garcia",
+    //         email: "eric.garcia@freematica.com"
+    //     },
+    //     {
+    //         name: "Pol",
+    //         surname: "Soriano",
+    //         email: "pol.soriano@freematica.com"
+    //     },
+    //     {
+    //         name: "Carlos",
+    //         surname: "Morales",
+    //         email: "carlos.morales@freematica.com"
+    //     }
+    // ];
 
-    users = [
-        {
-            name: "Alberto",
-            surname: "Matínez",
-            email: "alberto.martinez@freematica.com"
-        },
-        {
-            name: "Eric",
-            surname: "Garcia",
-            email: "eric.garcia@freematica.com"
-        },
-        {
-            name: "Pol",
-            surname: "Soriano",
-            email: "pol.soriano@freematica.com"
-        },
-        {
-            name: "Carlos",
-            surname: "Morales",
-            email: "carlos.morales@freematica.com"
+    async getAllUsers() {
+        try {
+            const data = await userSchema.find();
+            return data;
+        } catch (err) {
+            return err;
         }
-    ];
-
-    getAllUsers() {
-        return this.users;
     }
 
     getUserByID(id) {
