@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
-import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
 import { Injectable } from "@angular/core";
 import { IUser } from "./users.interface";
+import { map } from "rxjs/operators";
 
 @Injectable({
     providedIn: "root"
@@ -11,33 +11,36 @@ export class UsersService {
     private users: IUser[] = [];
     error: any;
 
-    constructor(private http: HttpClient) {
-        this.http.get<any>(this.url).subscribe(data => {
-            this.users = data[0];
-        }, error => (this.error = error));
-    }
+    constructor(private http: HttpClient) {}
 
     public getAllUsers() {
-        return this.users;
+        return this.http.get(this.url).pipe(
+            map(data => {
+                return data;
+            })
+        );
     }
 
-    public getUserByID(name: string) {
-        let data: IUser = {
-            name: "",
-            surname: "",
-            email: ""
-        };
-        this.users.some((user: IUser) => {
-            if (name.toLowerCase() === user.name.toLowerCase()) {
-                data = user;
-            }
-        });
-        return data;
-    }
+    // public getUserByID(name: string) {
+    //     let users = this.getAllUsers();
+    //     let data: IUser = {
+    //         name: "",
+    //         surname: "",
+    //         email: ""
+    //     };
+    //     users.some((user: IUser) => {
+    //         if (name.toLowerCase() === user.name.toLowerCase()) {
+    //             data = user;
+    //         }
+    //     });
+    //     return data;
+    // }
 
     public createUser(user: IUser) {
-        this.http.post<any>(this.url, user).subscribe(data => {
-            console.log(data);
-        });
+        return this.http.post<any>(this.url, user).pipe(
+            map(data => {
+                return data;
+            })
+        );
     }
 }
