@@ -1,29 +1,6 @@
 import userSchema from "../models/user.model.js";
 
 class userController {
-    // users = [
-    //     {
-    //         name: "Alberto",
-    //         surname: "Matínez",
-    //         email: "alberto.martinez@freematica.com"
-    //     },
-    //     {
-    //         name: "Eric",
-    //         surname: "Garcia",
-    //         email: "eric.garcia@freematica.com"
-    //     },
-    //     {
-    //         name: "Pol",
-    //         surname: "Soriano",
-    //         email: "pol.soriano@freematica.com"
-    //     },
-    //     {
-    //         name: "Carlos",
-    //         surname: "Morales",
-    //         email: "carlos.morales@freematica.com"
-    //     }
-    // ];
-
     async getAllUsers() {
         try {
             const data = await userSchema.find();
@@ -38,8 +15,18 @@ class userController {
         return data;
     }
 
-    createUser(req, res) {
-        return req.body;
+    async createUser(req, res) {
+        const User = new userSchema({
+            name: req.body.name,
+            surname: req.body.surname,
+            email: req.body.email
+        });
+        try {
+            const newUser = await User.save();
+            return newUser;
+        } catch (err) {
+            return err;
+        }
     }
 
     deleteUsers() {

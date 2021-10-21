@@ -13,8 +13,8 @@ router.get("/:id", function(req, res, next) {
     res.status(200).send(data);
 });
 
-router.post("/", function(req, res, next) {
-    const data = userController.createUser(req);
+router.post("/", async function(req, res, next) {
+    const data = await userController.createUser(req);
     res.status(201).send(data);
 });
 
