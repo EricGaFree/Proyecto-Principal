@@ -18,9 +18,9 @@ export class HomeComponent {
     isValidFormSubmitted = false;
 
     register: IUser = {
-        name: "alberto",
-        surname: "martinez",
-        email: "algo@algo.com"
+        name: "",
+        surname: "",
+        email: ""
     };
 
     constructor(private http: HttpClient) {} // <---
