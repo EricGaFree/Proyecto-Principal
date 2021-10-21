@@ -1,0 +1,56 @@
+<h2>Pulsa para obtener los usuarios: </h2>
+<button type="button" (click)="getAllUsers()">Click</button>
+<div id="usuarios"></div>
+
+<p *ngIf="users.length === 0">No hay usuarios...</p>
+<ul *ngIf="users.length !== 0">
+    <li *ngFor="let user of users">{{ user.surname }}, {{ user.name }}: {{ user.email }}</li>
+</ul>
+<!-- <h2>Pulsa para obtener un usuario en especifico: </h2>
+<form action="">
+    <label for="nombre1">Nombre: </label>
+    <input type="text" name="nombre1" id="nombre1">
+    <button type="button" (click)="getUserByName()" style="display: block; margin-top: 20px;">Click</button>
+</form>
+<br>
+<div id="usuarioID"></div> -->
+
+<div class="container">
+    <form (ngSubmit)="createUser(user)" #user="ngForm">
+        <label for="name"><b>Name</b></label>
+        <input type="text" 
+            #name="ngModel" 
+            [(ngModel)]="register.name" 
+            placeholder="Name: "
+            name="name"
+            minlength="3"
+            class="form-control"
+            required
+            [ngClass]="{'is-valid': !name.invalid, 'is-invalid': name.invalid}"/>
+        <label for="surname"><b>Surname</b></label>
+        <input type="text" 
+            #surname="ngModel" 
+            [(ngModel)]="register.surname" 
+            placeholder="Surname: "
+            name="surname"
+            minlength="3"
+            class="form-control"
+            required
+            [ngClass]="{'is-valid': !surname.invalid, 'is-invalid': surname.invalid}"/>
+        <label for="email"><b>Email</b></label>
+        <input
+            email
+            #email="ngModel" 
+            [(ngModel)]="register.email" 
+            placeholder="Email: "
+            name="email"
+            minlength="3"
+            class="form-control"
+            required
+            [ngClass]="{'is-valid': !email.invalid, 'is-invalid': email.invalid}"/>
+            
+            <br>
+            <button type="submit" class="btn btn-primary">New User</button>
+    </form>
+    <p *ngIf="isValidFormSubmitted">Usuario Creado Correctamente</p>
+</div>

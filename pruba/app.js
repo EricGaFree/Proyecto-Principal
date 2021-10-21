@@ -4,9 +4,10 @@ import { join } from "path";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
 import path from "path";
+import cors from "cors";
 
 import indexRouter from "./backend/routes/index.routes.js";
-import userRouter from "./backend/routes/user.routes.js";
+import usersRouter from "./backend/routes/user.routes.js";
 
 var app = express();
 const __dirname = path.resolve();
@@ -20,9 +21,10 @@ app.use(json());
 app.use(urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(join(__dirname, "public")));
+app.use(cors());
 
 app.use("/", indexRouter);
-app.use("/users", userRouter);
+app.use("/users", usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
