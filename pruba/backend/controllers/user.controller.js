@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 let users = {
     "1": {
         nombre: "Alberto",
@@ -42,3 +43,46 @@ export function deleteUsers() {
 export function UpdateUser() {
     return { msg: "User updated." };
 }
+=======
+import userSchema from "../models/user.model.js";
+
+class userController {
+    async getAllUsers() {
+        try {
+            const data = await userSchema.find();
+            return data;
+        } catch (err) {
+            return err;
+        }
+    }
+
+    getUserByID(id) {
+        const data = users[id] ? users[id] : { msg: "Not found" };
+        return data;
+    }
+
+    async createUser(req, res) {
+        const User = new userSchema({
+            name: req.body.name,
+            surname: req.body.surname,
+            email: req.body.email
+        });
+        try {
+            const newUser = await User.save();
+            return newUser;
+        } catch (err) {
+            return err;
+        }
+    }
+
+    deleteUsers() {
+        return { msg: "Usuarios eliminados" };
+    }
+
+    UpdateUser() {
+        return { msg: "User updated." };
+    }
+}
+
+export default new userController();
+>>>>>>> d6663de7af3c690d537b0575f68a1f2c8550ecf7
